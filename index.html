@@ -1,162 +1,35 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lunara 💖</title>
-<style>
-  body {
-    margin: 0;
-    overflow: hidden;
-    background: linear-gradient(to top, #a0d8ef, #cfefff);
-    font-family: 'Comic Sans MS', cursive;
-    height: 100vh;
-  }
-
-  /* Gökyüzü bulutları */
-  .cloud {
-    position: absolute;
-    background: #fff;
-    border-radius: 50%;
-    opacity: 0.8;
-    animation: moveClouds 60s linear infinite;
-  }
-  @keyframes moveClouds {
-    from { transform: translateX(-200px); }
-    to { transform: translateX(100vw); }
-  }
-
-  /* Fotoğraf */
-  .lunara-photo {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 220px;
-    height: auto;
-    border-radius: 20px;
-    box-shadow: 0 0 30px rgba(255,255,255,0.8);
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    animation: fadeInPhoto 5s ease-in-out forwards;
-    z-index: 5;
-  }
-
-  @keyframes fadeInPhoto {
-    0% { opacity: 0; transform: translate(-50%, -60%) scale(0.9); }
-    50% { opacity: 1; transform: translate(-50%, -50%) scale(1.03); }
-    100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-  }
-
-  /* Balonlar */
-  .balloon {
-    position: absolute;
-    bottom: -150px;
-    width: 80px;
-    height: 100px;
-    border-radius: 50%;
-    animation: float 10s ease-in-out infinite;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    transition: transform 0.4s ease;
-    opacity: 0;
-    animation-delay: 5s;
-    animation-fill-mode: forwards;
-  }
-
-  .balloon::after {
-    content: '';
-    position: absolute;
-    width: 2px;
-    height: 60px;
-    background: #aaa;
-    bottom: -60px;
-  }
-
-  @keyframes float {
-    0% { transform: translateY(0px); opacity: 1; }
-    50% { transform: translateY(-30px); opacity: 1; }
-    100% { transform: translateY(0px); opacity: 1; }
-  }
-
-  /* Balon renkleri */
-  .balloon:nth-child(1) { background: #ffb6c1; left: 5%; animation-delay: 5s; }
-  .balloon:nth-child(2) { background: #ffd1dc; left: 15%; animation-delay: 6s; }
-  .balloon:nth-child(3) { background: #b3e5fc; left: 25%; animation-delay: 7s; }
-  .balloon:nth-child(4) { background: #c8e6c9; left: 35%; animation-delay: 8s; }
-  .balloon:nth-child(5) { background: #f8bbd0; left: 45%; animation-delay: 9s; }
-  .balloon:nth-child(6) { background: #d1c4e9; left: 55%; animation-delay: 10s; }
-  .balloon:nth-child(7) { background: #ffe0b2; left: 65%; animation-delay: 11s; }
-  .balloon:nth-child(8) { background: #b2dfdb; left: 75%; animation-delay: 12s; }
-  .balloon:nth-child(9) { background: #ffccbc; left: 85%; animation-delay: 13s; }
-  .balloon:nth-child(10) { background: #e1bee7; left: 90%; animation-delay: 14s; }
-
-  /* Mesaj kutusu */
-  .message {
-    position: absolute;
-    bottom: 120px;
-    background: rgba(255, 255, 255, 0.9);
-    padding: 8px 14px;
-    border-radius: 12px;
-    color: #444;
-    font-size: 16px;
-    opacity: 0;
-    transform: scale(0.8);
-    transition: opacity 0.5s, transform 0.5s;
-    white-space: nowrap;
-  }
-
-  .show {
-    opacity: 1;
-    transform: scale(1);
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lunara’ya Mesajım</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Bulutlar -->
-  <div class="cloud" style="width:120px;height:60px;top:10%;left:5%;animation-delay:5s;"></div>
-  <div class="cloud" style="width:180px;height:90px;top:30%;left:-10%;animation-delay:10s;"></div>
-  <div class="cloud" style="width:150px;height:75px;top:50%;left:20%;animation-delay:15s;"></div>
-  <div class="cloud" style="width:200px;height:100px;top:70%;left:-15%;animation-delay:20s;"></div>
+  <div class="sky">
+    <div class="clouds"></div>
 
-  <!-- Fotoğraf -->
-  <img src="images/lunara.jpg" class="lunara-photo" alt="Lunara">
+    <!-- Lunara'nın fotoğrafı -->
+    <img src="images/lunara.jpg" alt="Lunara" class="lunara-photo" />
 
-  <!-- Balonlar -->
-  <div class="balloon" data-msg="Seni seviyorum 💞"></div>
-  <div class="balloon" data-msg="Sen dünyalar güzelisin 🌸"></div>
-  <div class="balloon" data-msg="Herşeyimsin 💫"></div>
-  <div class="balloon" data-msg="Hayatımın anlamı ❤️"></div>
-  <div class="balloon" data-msg="Yavrum benim 🩷"></div>
-  <div class="balloon" data-msg="Her zaman seninleyim 🌙"></div>
-  <div class="balloon" data-msg="Seni hiçbir zaman bırakmayacağım 🤍"></div>
-  <div class="balloon" data-msg="Ömrüm seninle olsun 💍"></div>
-  <div class="balloon" data-msg="İyi ki varsın ☁️"></div>
-  <div class="balloon" data-msg="Sadece sana aitim 💖"></div>
+    <!-- Balonlar -->
+    <div class="balloons">
+      <div class="balloon" data-msg="Seni seviyorum 💖"></div>
+      <div class="balloon" data-msg="Sen dünyalar güzelisin 🌸"></div>
+      <div class="balloon" data-msg="Her şeyimsin 💞"></div>
+      <div class="balloon" data-msg="Hayatımın anlamı 🌙"></div>
+      <div class="balloon" data-msg="Yavrum benim 🩷"></div>
+      <div class="balloon" data-msg="Her zaman seninleyim 🤍"></div>
+      <div class="balloon" data-msg="Seni hiçbir zaman bırakmayacağım 💫"></div>
+      <div class="balloon" data-msg="Ömrüm seninle olsun ☁️"></div>
+      <div class="balloon" data-msg="İyi ki varsın 🌷"></div>
+      <div class="balloon" data-msg="Sadece sana aitim 💌"></div>
+    </div>
+  </div>
 
-<script>
-  // Fotoğraf belirdikten sonra balonları görünür yap
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      document.querySelectorAll('.balloon').forEach(b => b.style.opacity = '1');
-    }, 5000); // 5 saniye sonra
-  });
+  <div class="message-box" id="messageBox"></div>
 
-  // Balonlara tıklayınca mesaj çıkart
-  document.querySelectorAll('.balloon').forEach(balloon => {
-    balloon.addEventListener('click', () => {
-      const msgText = balloon.getAttribute('data-msg');
-      let msg = document.createElement('div');
-      msg.className = 'message';
-      msg.textContent = msgText;
-      balloon.appendChild(msg);
-      setTimeout(() => msg.classList.add('show'), 10);
-      setTimeout(() => msg.remove(), 3000);
-    });
-  });
-</script>
+  <script src="script.js"></script>
 </body>
 </html>
